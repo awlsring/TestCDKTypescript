@@ -1,5 +1,13 @@
 {
+  
+
   "compilerOptions": {
+    // Lambda layer stuff
+    "baseUrl": "./",
+    "paths": {
+      "/opt/nodejs/test1": ["/Users/awlsring/Code/TestCDKTypescript/lib/lambdas/layers/test-layer/nodejs/test1.ts"],
+      "/opt/nodejs/test2": ["/Users/awlsring/Code/TestCDKTypescript/lib/lambdas/layers/test-layer/nodejs/test2.ts"],
+    },
     "target": "ES2018",
     "module": "commonjs",
     "lib": [

@@ -1,0 +1,1 @@
+export const Test1Message = "String from test1"

@@ -8,21 +8,25 @@ export class TestCdkTypescriptStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const testLayer = new LayerVersion(this, 'calc-layer', {
+    const testLayer = new LayerVersion(this, 'test-layer', {
       compatibleRuntimes: [
         Runtime.NODEJS_12_X,
         Runtime.NODEJS_14_X,
       ],
       code: Code.fromAsset(path.join(__dirname, "/lambdas/layers/test-layer")),
       description: 'TestLayer',
+      layerVersionName: "TestLayer"
     });
-    new NodejsFunction(this, 'MyFunction', {
+    new NodejsFunction(this, 'Test-Function', {
       entry: path.join(__dirname, "/lambdas/functions/test.ts"),
       handler: 'lambdaHandler',
       functionName: "Test-Typescript",
       architecture: Architecture.ARM_64,
+      bundling: {
+        minify: false,
+        externalModules: ['aws-sdk'],
+      },
       layers: [testLayer]
     });
-
   }
 }

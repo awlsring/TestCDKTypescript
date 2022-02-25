@@ -1,12 +1,11 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { FunctionMessage } from "../common/testlib/constants";
 /* eslint-disable import/extensions, import/no-absolute-path */
-import { Test1Message } from "/opt/nodejs/test1";
-/* eslint-disable import/extensions, import/no-absolute-path */
-import { Test2Message } from "/opt/nodejs/test2";
+import { Test1Message, Test2Message } from "/opt/nodejs/test-layer";
   
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
+  // Test message of imports
   const message = {
     "localMessage": FunctionMessage,
     "layerMessage1": Test1Message,
